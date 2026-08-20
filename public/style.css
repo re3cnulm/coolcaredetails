@@ -464,10 +464,23 @@ html, body { overflow-x: hidden; }
 .ig-panel.has-gallery .ig-copy { margin-left: 0; margin-right: 0; }
 @media (max-width: 860px) { .ig-panel.has-gallery .ig-copy { margin-left: auto; margin-right: auto; } }
 
-.ig-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem;
+.ig-grid { display: grid; gap: .6rem; }
+.ig-grid.is-photos { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 520px) { .ig-grid.is-photos { grid-template-columns: repeat(2, 1fr); } }
+
+/* Real Instagram embeds render as their own white cards; give them room and a
+   frame that keeps them from looking dropped onto the dark panel. */
+.ig-grid.is-embeds {
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: .9rem;
 }
-@media (max-width: 520px) { .ig-grid { grid-template-columns: repeat(2, 1fr); } }
+.ig-grid.is-embeds .instagram-media {
+  border-radius: 10px !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+  box-shadow: 0 6px 22px rgba(0,0,0,.55) !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
 .ig-tile {
   display: block; aspect-ratio: 1; overflow: hidden;
   border-radius: 8px; border: 1px solid rgba(255,255,255,.12);
@@ -478,3 +491,7 @@ html, body { overflow-x: hidden; }
   transition: transform .35s ease, filter .35s ease;
 }
 .ig-tile:hover img { transform: scale(1.07); filter: brightness(1.1); }
+
+/* With embeds the panel reads better stacked than side by side. */
+.ig-panel.has-embeds { grid-template-columns: 1fr; text-align: center; }
+.ig-panel.has-embeds .ig-copy { margin-left: auto; margin-right: auto; }
