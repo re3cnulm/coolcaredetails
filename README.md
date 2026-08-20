@@ -14,6 +14,8 @@ public/            static site (this is what visitors see)
   work.html          "Our Work" gallery page (/work)
   about.html         About page (/about)
   services.html      Services page — detailing, ceramic, paint correction (/services)
+  faq.html           FAQ page with FAQ schema (/faq)
+  products.html      "Products We Use" — blank until the product list arrives (/products)
   henderson.html · north-las-vegas.html · summerlin.html · spring-valley.html
                      per-area location pages for local SEO
   robots.txt         search-crawler rules
