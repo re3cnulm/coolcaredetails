@@ -9,6 +9,17 @@ module.exports = async (req, res) => {
       const result = validateBooking(req.body || {});
       if (!result.ok) return res.status(400).json({ error: result.errors.join(' ') });
 
+      // The quote is always priced server-side so a customer cannot set their
+      // own total; signed-in staff logging a job by phone may override it.
+      if (auth.isAuthenticated(req)) {
+        const body = req.body || {};
+        if (body.quote != null && body.quote !== '') result.value.quote = Number(body.quote);
+        if (body.status) result.value.status = body.status;
+        if (body.source) result.value.source = body.source;
+        if (body.scheduledAt) result.value.scheduledAt = body.scheduledAt;
+        if (body.crmNotes) result.value.crmNotes = body.crmNotes;
+      }
+
       const booking = await store.createBooking(result.value);
       await notifyNewBooking(booking);
 

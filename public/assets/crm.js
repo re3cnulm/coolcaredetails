@@ -535,7 +535,6 @@
       this.disabled = true;
       var request = isNew
         ? api('/api/bookings', { method: 'POST', body: JSON.stringify(Object.assign({ source: 'phone' }, data)) })
-            .then(function () { return api('/api/bookings'); })
         : api('/api/bookings?id=' + encodeURIComponent(booking.id), {
             method: 'PATCH', body: JSON.stringify(data)
           });
