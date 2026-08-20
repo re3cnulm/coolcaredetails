@@ -13,6 +13,9 @@ public/            static site (this is what visitors see)
   crm.html           staff CRM (leads, schedule, invoices)
   work.html          "Our Work" gallery page (/work)
   about.html         About page (/about)
+  services.html      Services page — detailing, ceramic, paint correction (/services)
+  henderson.html · north-las-vegas.html · summerlin.html · spring-valley.html
+                     per-area location pages for local SEO
   robots.txt         search-crawler rules
   sitemap.xml        page list for search engines
   style.css          public site styles
