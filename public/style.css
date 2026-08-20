@@ -335,3 +335,98 @@ a { color: inherit; }
 .footer-staff { margin-top: .4rem; font-size: .85rem; }
 .footer-staff a { color: #4a4a4a; text-decoration: none; }
 .footer-staff a:hover { color: var(--chrome-mid); }
+
+/* ===== bubble background ===== */
+.bubbles {
+  position: fixed; inset: 0; z-index: 0;
+  overflow: hidden; pointer-events: none;
+  contain: strict;
+}
+/* Keep page content above the decoration. */
+body > header, body > main, body > footer { position: relative; z-index: 1; }
+
+.bubble {
+  position: absolute; bottom: -140px;
+  border-radius: 50%;
+  /* A real bubble is empty in the middle: a bright rim, a specular highlight
+     near the top-left and a faint bounce below it do all the work. */
+  background:
+    radial-gradient(circle at 31% 26%,
+      rgba(255,255,255,.50) 0%,
+      rgba(255,255,255,.18) 6%,
+      rgba(255,255,255,0) 17%),
+    radial-gradient(circle at 66% 76%,
+      rgba(255,255,255,.16) 0%,
+      rgba(255,255,255,0) 13%),
+    radial-gradient(circle at 50% 50%,
+      rgba(255,255,255,.035) 0%,
+      rgba(255,255,255,.05) 55%,
+      rgba(255,255,255,.20) 74%,
+      rgba(255,255,255,.52) 89%,
+      rgba(255,255,255,.30) 96%,
+      rgba(255,255,255,0) 100%);
+  box-shadow: 0 0 14px rgba(255,255,255,.09);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation-name: ccd-rise;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+/* A few carry the brand red so the layer reads as ours, not generic. */
+.bubble.is-tinted {
+  background:
+    radial-gradient(circle at 31% 26%,
+      rgba(255,255,255,.46) 0%,
+      rgba(255,255,255,.16) 6%,
+      rgba(255,255,255,0) 17%),
+    radial-gradient(circle at 50% 50%,
+      rgba(230,57,70,.05) 0%,
+      rgba(230,57,70,.09) 55%,
+      rgba(230,57,70,.30) 74%,
+      rgba(255,96,106,.62) 89%,
+      rgba(193,18,31,.30) 96%,
+      rgba(255,255,255,0) 100%);
+  box-shadow: 0 0 18px rgba(193,18,31,.26);
+}
+
+@keyframes ccd-rise {
+  0%   { transform: translate3d(0, 0, 0) scale(.92); opacity: 0; }
+  8%   { opacity: var(--peak, .45); }
+  50%  { transform: translate3d(var(--sway, 20px), -55vh, 0) scale(1); }
+  92%  { opacity: var(--peak, .45); }
+  100% { transform: translate3d(var(--drift, 30px), -118vh, 0) scale(1.06); opacity: 0; }
+}
+
+/* Honour a reduced-motion preference: keep the texture, drop the movement. */
+@media (prefers-reduced-motion: reduce) {
+  .bubble {
+    animation: none;
+    opacity: .16;
+    bottom: auto;
+    top: calc(var(--peak, .4) * 180%);
+    will-change: auto;
+  }
+}
+
+/* ===== responsive header =====
+   The nav sat on one row at every width and overflowed narrow phones.
+   Below 760px the logo keeps row one and the links wrap onto row two. */
+@media (max-width: 760px) {
+  .topbar { flex-wrap: wrap; gap: .45rem .8rem; padding: .55rem .9rem; }
+  .brand-logo .ccd-logo-img, .brand-logo .ccd-mark { height: 46px; }
+  .nav {
+    order: 2; width: 100%;
+    justify-content: space-between; gap: .4rem;
+  }
+  .nav a { font-size: .84rem; letter-spacing: .03em; }
+  .nav-cta { padding: .3rem .7rem; }
+}
+@media (max-width: 430px) {
+  .nav a { font-size: .78rem; }
+  .nav-cta { padding: .28rem .55rem; }
+  .brand-logo .ccd-logo-img, .brand-logo .ccd-mark { height: 40px; }
+}
+
+/* Belt and braces: nothing decorative may widen the document. */
+.bubbles { max-width: 100vw; }
+html, body { overflow-x: hidden; }
