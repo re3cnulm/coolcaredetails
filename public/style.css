@@ -205,3 +205,122 @@ a { color: inherit; }
   background: #070707;
 }
 .footer a { color: var(--chrome-mid); text-decoration: none; }
+
+/* ===== booking form ===== */
+.book-intro {
+  text-align: center; max-width: 640px; margin: -1.5rem auto 2.5rem;
+  color: var(--chrome-mid);
+}
+.booking { display: grid; grid-template-columns: 1fr 340px; gap: 1.6rem; align-items: start; }
+@media (max-width: 900px) { .booking { grid-template-columns: 1fr; } }
+
+.field-group {
+  background: linear-gradient(160deg, #141518, #0c0d0f);
+  border: 2px solid rgba(193,18,31,.55); border-radius: 10px;
+  padding: 1.3rem 1.4rem 1.5rem; margin-bottom: 1.2rem;
+}
+.field-group legend {
+  font-family: var(--font-head); font-style: italic; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .05em; font-size: 1.15rem;
+  color: var(--chrome-light); padding: 0 .6rem; display: flex; align-items: center; gap: .55rem;
+}
+.field-group legend em { font-style: normal; color: var(--chrome-dark); font-size: .85rem; font-weight: 400; }
+.step {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.7rem; height: 1.7rem; border-radius: 50%;
+  background: linear-gradient(180deg, var(--red-bright), #8e0d17);
+  color: #fff; font-style: normal; font-size: .95rem;
+}
+
+.choice-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: .7rem; }
+.choice {
+  background: #17181c; border: 2px solid rgba(255,255,255,.12); border-radius: 8px;
+  color: var(--text); font-family: var(--font-cond); font-size: 1rem;
+  padding: .8rem .9rem; cursor: pointer; text-align: left;
+  display: flex; flex-direction: column; gap: .25rem; transition: border-color .15s, background .15s;
+}
+.choice:hover { border-color: var(--chrome-dark); background: #1d1e23; }
+.choice.is-on { border-color: var(--red-bright); background: rgba(193,18,31,.16); box-shadow: 0 0 14px rgba(230,57,70,.3); }
+.choice-label { font-weight: 600; }
+.choice-price {
+  font-family: var(--font-head); font-style: italic; font-weight: 700;
+  font-size: 1.4rem; color: var(--chrome-light);
+}
+.choice-package.tier-basic .choice-label { color: var(--green); }
+.choice-package.tier-intermediate .choice-label { color: var(--yellow); }
+.choice-package.tier-full .choice-label { color: var(--red-bright); }
+
+.addon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: .5rem; }
+.addon {
+  display: flex; align-items: center; gap: .6rem; cursor: pointer;
+  background: #17181c; border: 1px solid rgba(255,255,255,.1); border-radius: 6px;
+  padding: .55rem .7rem; transition: border-color .15s, background .15s;
+}
+.addon:hover { border-color: var(--chrome-dark); }
+.addon.is-on { border-color: var(--red); background: rgba(193,18,31,.14); }
+.addon input { accent-color: var(--red-bright); width: 1.05rem; height: 1.05rem; flex: none; }
+.addon-label { flex: 1; }
+.addon-price { color: var(--red-bright); font-family: var(--font-head); }
+
+.field { display: block; margin-top: .9rem; }
+.field > span { display: block; margin-bottom: .3rem; font-size: .95rem; color: var(--chrome-mid); }
+.field > span b { color: var(--red-bright); }
+.field > span em { font-style: normal; color: var(--chrome-dark); font-size: .85em; }
+.field input, .field select, .field textarea {
+  width: 100%; background: #0d0e10; color: var(--chrome-light);
+  border: 1px solid rgba(255,255,255,.16); border-radius: 6px;
+  padding: .6rem .7rem; font-family: var(--font-cond); font-size: 1rem;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none; border-color: var(--red-bright); box-shadow: 0 0 0 3px rgba(230,57,70,.2);
+}
+.field textarea { resize: vertical; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+@media (max-width: 620px) { .field-row { grid-template-columns: 1fr; } }
+
+.booking-summary { position: sticky; top: 84px; }
+@media (max-width: 900px) { .booking-summary { position: static; } }
+.summary-card {
+  background: linear-gradient(160deg, #17181c, #0b0c0e);
+  border: 2px solid var(--red); border-radius: 10px; padding: 1.4rem;
+  box-shadow: 0 0 26px rgba(193,18,31,.25);
+}
+.summary-card h3 {
+  font-family: var(--font-head); font-style: italic; font-weight: 700;
+  text-transform: uppercase; color: var(--red-bright); font-size: 1.25rem; margin-bottom: .9rem;
+}
+.quote-lines { list-style: none; margin-bottom: .9rem; }
+.quote-lines li {
+  display: flex; justify-content: space-between; gap: .8rem;
+  padding: .4rem 0; border-bottom: 1px dotted rgba(255,255,255,.14); font-size: .97rem;
+}
+.quote-lines .quote-empty { color: var(--chrome-dark); border-bottom: none; display: block; }
+.quote-total {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: .7rem 0; border-top: 2px solid var(--red); margin-bottom: .6rem;
+}
+.quote-total b {
+  font-family: var(--font-head); font-style: italic; font-size: 2rem;
+  background: linear-gradient(180deg, #fff, #999);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.quote-note { font-size: .85rem; color: var(--chrome-dark); margin-bottom: 1rem; }
+.btn-block { display: block; width: 100%; text-align: center; border: none; cursor: pointer; }
+.btn-block:disabled { opacity: .6; cursor: wait; }
+.quote-alt { text-align: center; margin-top: .8rem; font-size: .92rem; color: var(--chrome-mid); }
+.quote-alt a { color: var(--red-bright); }
+.form-message { margin-top: .8rem; font-size: .95rem; text-align: center; }
+.form-message.is-error { color: #ff7a84; }
+
+.booking-done { text-align: center; padding: 3rem 1.5rem; grid-column: 1 / -1; }
+.booking-done h3 {
+  font-family: var(--font-head); font-style: italic; font-weight: 700;
+  text-transform: uppercase; font-size: 1.9rem; color: var(--green); margin-bottom: .8rem;
+}
+.booking-done p { margin-bottom: .6rem; }
+.booking-done-total { font-size: 1.2rem; }
+.booking-done a { color: var(--red-bright); }
+
+.footer-staff { margin-top: .4rem; font-size: .85rem; }
+.footer-staff a { color: #4a4a4a; text-decoration: none; }
+.footer-staff a:hover { color: var(--chrome-mid); }

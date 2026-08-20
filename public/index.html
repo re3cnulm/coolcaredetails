@@ -25,6 +25,7 @@
   <nav class="nav">
     <a href="#packages">Packages</a>
     <a href="#addons">Add-Ons</a>
+    <a href="#book">Book</a>
     <a href="#contact">Contact</a>
     <a class="nav-cta" href="tel:7027200758">702.720.0758</a>
   </nav>
@@ -57,8 +58,8 @@
     <p class="tagline">PREMIUM CAR CARE. EXCEPTIONAL RESULTS.</p>
     <p class="hero-sub">Mobile Detail Service — We Come To You, All Around Las Vegas</p>
     <div class="hero-ctas">
-      <a class="btn btn-red" href="tel:7027200758">📞 Call or Text 702.720.0758</a>
-      <a class="btn btn-chrome" href="https://instagram.com/coolcare_details" target="_blank" rel="noopener">Follow @coolcare_details</a>
+      <a class="btn btn-red" href="#book">🗓 Book Your Detail</a>
+      <a class="btn btn-chrome" href="tel:7027200758">📞 Call or Text 702.720.0758</a>
     </div>
   </section>
 
@@ -229,9 +230,103 @@
     </div>
   </section>
 
+  <!-- BOOKING -->
+  <section id="book" class="section">
+    <h2 class="section-title">Book Your <span class="amp">Detail</span></h2>
+    <p class="book-intro">
+      Pick your vehicle and package for an instant estimate, then send the request.
+      We confirm every appointment by phone — usually within a couple of hours.
+    </p>
+
+    <form id="booking-form" class="booking" novalidate>
+      <div class="booking-main">
+
+        <fieldset class="field-group">
+          <legend><span class="step">1</span> Vehicle Size</legend>
+          <div class="choice-row" id="vehicle-choices"></div>
+          <label class="field">
+            <span>Year, make &amp; model <em>(optional)</em></span>
+            <input type="text" name="vehicleDesc" maxlength="120" placeholder="2019 Toyota 4Runner">
+          </label>
+        </fieldset>
+
+        <fieldset class="field-group">
+          <legend><span class="step">2</span> Package</legend>
+          <div class="choice-row choice-packages" id="package-choices"></div>
+        </fieldset>
+
+        <fieldset class="field-group">
+          <legend><span class="step">3</span> Add-Ons <em>(optional)</em></legend>
+          <div class="addon-grid" id="addon-choices"></div>
+        </fieldset>
+
+        <fieldset class="field-group">
+          <legend><span class="step">4</span> Your Details</legend>
+          <div class="field-row">
+            <label class="field">
+              <span>Name <b>*</b></span>
+              <input type="text" name="name" maxlength="120" required autocomplete="name">
+            </label>
+            <label class="field">
+              <span>Phone <b>*</b></span>
+              <input type="tel" name="phone" maxlength="40" required autocomplete="tel" placeholder="702-555-0123">
+            </label>
+          </div>
+          <div class="field-row">
+            <label class="field">
+              <span>Email <em>(optional)</em></span>
+              <input type="email" name="email" maxlength="160" autocomplete="email">
+            </label>
+            <label class="field">
+              <span>Service address <em>(we come to you)</em></span>
+              <input type="text" name="address" maxlength="240" autocomplete="street-address" placeholder="Street, city">
+            </label>
+          </div>
+          <div class="field-row">
+            <label class="field">
+              <span>Preferred date</span>
+              <input type="date" name="preferredDate" id="preferred-date">
+            </label>
+            <label class="field">
+              <span>Preferred time</span>
+              <select name="preferredTime">
+                <option value="">No preference</option>
+                <option>Morning (8am – 11am)</option>
+                <option>Midday (11am – 2pm)</option>
+                <option>Afternoon (2pm – 5pm)</option>
+                <option>Evening (after 5pm)</option>
+              </select>
+            </label>
+          </div>
+          <label class="field">
+            <span>Anything we should know? <em>(pet hair, stains, heavy soil…)</em></span>
+            <textarea name="notes" rows="3" maxlength="2000"></textarea>
+          </label>
+        </fieldset>
+      </div>
+
+      <aside class="booking-summary">
+        <div class="summary-card">
+          <h3>Your Estimate</h3>
+          <ul id="quote-lines" class="quote-lines">
+            <li class="quote-empty">Choose a vehicle size and package to see your price.</li>
+          </ul>
+          <p class="quote-total"><span>Estimated total</span><b id="quote-total">$0</b></p>
+          <p class="quote-note">
+            Final price may vary with vehicle condition — excessive dirt, heavy pet hair,
+            trash or severe stains may add to the total.
+          </p>
+          <button type="submit" class="btn btn-red btn-block" id="booking-submit">Request Booking</button>
+          <p class="quote-alt">Prefer to talk? <a href="tel:7027200758">Call or text 702.720.0758</a></p>
+          <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+        </div>
+      </aside>
+    </form>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact" class="section contact">
-    <h2 class="section-title">Book Now</h2>
+    <h2 class="section-title">Get In Touch</h2>
     <p class="contact-line">Call or text to schedule — we come to you, anywhere in the Las Vegas valley.</p>
     <a class="phone-big" href="tel:7027200758">702.720.0758</a>
     <div class="hero-ctas">
@@ -245,8 +340,11 @@
 
 <footer class="footer">
   <p>© <span id="year"></span> Coolcare Details · Las Vegas, NV · <a href="tel:7027200758">702.720.0758</a></p>
+  <p class="footer-staff"><a href="/crm">Staff Login</a></p>
 </footer>
 
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="assets/pricing.js"></script>
+<script src="assets/booking.js"></script>
 </body>
 </html>

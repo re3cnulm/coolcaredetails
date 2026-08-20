@@ -1,0 +1,9 @@
+{
+  "name": "coolcaredetails",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Coolcare Details website, booking system and CRM",
+  "dependencies": {
+    "pg": "^8.13.1"
+  }
+}
