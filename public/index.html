@@ -15,12 +15,7 @@
 
 <header class="topbar">
   <a class="brand" href="#top">
-    <img class="brand-logo" src="images/logo.png" alt="Coolcare Details logo"
-         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <span class="brand-text" style="display:none">
-      <span class="brand-script">Coolcare</span>
-      <span class="brand-details">DETAILS</span>
-    </span>
+    <span class="brand-logo" data-ccd-logo="images/logo.png" data-logo-alt="Coolcare Details"></span>
   </a>
   <nav class="nav">
     <a href="#packages">Packages</a>
@@ -35,25 +30,8 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-pinstripe" aria-hidden="true">
-      <svg viewBox="0 0 600 160" preserveAspectRatio="xMidYMid meet">
-        <g fill="none" stroke-linecap="round">
-          <path d="M300 10 L300 150" stroke="#c1121f" stroke-width="5"/>
-          <path d="M300 20 C220 40 160 60 60 80 C160 100 220 120 300 140 C380 120 440 100 540 80 C440 60 380 40 300 20 Z" stroke="#d8d8d8" stroke-width="3"/>
-          <path d="M300 35 C250 50 200 65 130 80 C200 95 250 110 300 125 C350 110 400 95 470 80 C400 65 350 50 300 35 Z" stroke="#c1121f" stroke-width="3"/>
-          <path d="M150 30 C230 55 370 55 450 30" stroke="#8a8a8a" stroke-width="2"/>
-          <path d="M150 130 C230 105 370 105 450 130" stroke="#8a8a8a" stroke-width="2"/>
-        </g>
-      </svg>
-    </div>
     <h1 class="hero-logo">
-      <img class="hero-logo-img" src="images/logo.png" alt="Coolcare Details"
-           onload="document.querySelector('.hero-pinstripe').style.display='none'"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-      <span class="hero-logo-text" style="display:none">
-        <span class="logo-script">Coolcare</span>
-        <span class="logo-details">D E T A I L S</span>
-      </span>
+      <span class="hero-logo-slot" data-ccd-logo="images/logo.png" data-logo-alt="Coolcare Details"></span>
     </h1>
     <p class="tagline">PREMIUM CAR CARE. EXCEPTIONAL RESULTS.</p>
     <p class="hero-sub">Mobile Detail Service — We Come To You, All Around Las Vegas</p>
@@ -344,6 +322,7 @@
 </footer>
 
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="assets/logo.js"></script>
 <script src="assets/pricing.js"></script>
 <script src="assets/booking.js"></script>
 </body>

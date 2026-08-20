@@ -305,3 +305,11 @@ a { color: var(--red-bright); }
 .addon-check:hover { border-color: var(--chrome-dark); }
 .addon-check input { accent-color: var(--red-bright); flex: none; }
 .addon-check b { margin-left: auto; color: var(--red-bright); font-family: var(--font-head); font-size: .88rem; }
+
+/* logo slots */
+.crm-logo { display: block; line-height: 0; }
+.crm-logo .ccd-logo-img, .crm-logo .ccd-mark { height: 36px; width: auto; display: block; }
+.login-logo { display: block; line-height: 0; margin-bottom: .7rem; }
+.login-logo .ccd-logo-img, .login-logo .ccd-mark { width: 190px; height: auto; margin: 0 auto; display: block; }
+.ccd-mark .ccd-script { font-family: "Great Vibes", cursive; font-size: 116px; }
+.ccd-mark .ccd-details { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 46px; letter-spacing: 13px; }
