@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coolcare Details — CRM</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Great+Vibes&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/crm.css">
+<link rel="icon" href="images/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="images/favicon.png">
+</head>
+<body class="crm">
+
+<!-- LOGIN -->
+<div id="login-screen" class="login-screen" hidden>
+  <form class="login-card" id="login-form">
+    <span class="login-logo" data-ccd-logo="images/logo.webp,images/logo.png" data-logo-alt="Coolcare Details"></span>
+    <h1>Coolcare Details</h1>
+    <p class="login-sub">Staff CRM</p>
+    <label class="field">
+      <span>Password</span>
+      <input type="password" id="login-password" autocomplete="current-password" required>
+    </label>
+    <button type="submit" class="btn btn-red btn-block" id="login-submit">Sign In</button>
+    <p class="form-message" id="login-message" role="status" aria-live="polite"></p>
+    <p class="login-back"><a href="/">← Back to website</a></p>
+  </form>
+</div>
+
+<!-- APP -->
+<div id="app" class="app" hidden>
+  <header class="crm-bar">
+    <div class="crm-brand">
+      <span class="crm-logo" data-ccd-logo="images/logo.webp,images/logo.png" data-logo-alt="Coolcare Details"></span>
+      <span>Coolcare Details <b>CRM</b></span>
+    </div>
+    <nav class="crm-tabs">
+      <button class="crm-tab is-on" data-view="pipeline">Leads</button>
+      <button class="crm-tab" data-view="schedule">Schedule</button>
+      <button class="crm-tab" data-view="invoices">Invoices</button>
+    </nav>
+    <div class="crm-actions">
+      <a class="ghost-btn" href="/" target="_blank" rel="noopener">View site</a>
+      <button class="ghost-btn" id="logout">Sign out</button>
+    </div>
+  </header>
+
+  <p class="storage-warning" id="storage-warning" hidden>
+    <b>Temporary storage.</b> No database is connected, so bookings will disappear when the
+    server restarts. In Vercel open <b>Storage → Create Database → Neon Postgres</b> and connect
+    it to this project — the tables build themselves on the next request.
+  </p>
+
+  <main class="crm-main">
+
+    <!-- PIPELINE -->
+    <section class="view" id="view-pipeline">
+      <div class="stat-row" id="stat-row"></div>
+
+      <div class="toolbar">
+        <input type="search" id="search" placeholder="Search name, phone, address…">
+        <select id="status-filter"><option value="">All statuses</option></select>
+        <button class="ghost-btn" id="refresh">Refresh</button>
+        <button class="btn btn-red" id="new-lead">+ New Lead</button>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table" id="leads-table">
+          <thead>
+            <tr>
+              <th>Received</th><th>Customer</th><th>Service</th>
+              <th>Scheduled</th><th>Quote</th><th>Status</th><th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p class="empty-state" id="leads-empty" hidden>
+          No bookings yet. Requests from the website's booking form land here automatically.
+        </p>
+      </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section class="view" id="view-schedule" hidden>
+      <div class="toolbar">
+        <button class="ghost-btn" id="cal-prev">‹ Prev</button>
+        <h2 class="cal-title" id="cal-title"></h2>
+        <button class="ghost-btn" id="cal-next">Next ›</button>
+        <button class="ghost-btn" id="cal-today">Today</button>
+      </div>
+      <div class="calendar" id="calendar"></div>
+      <div class="day-panel" id="day-panel"></div>
+    </section>
+
+    <!-- INVOICES -->
+    <section class="view" id="view-invoices" hidden>
+      <div class="stat-row" id="invoice-stats"></div>
+      <div class="toolbar">
+        <select id="invoice-filter"><option value="">All invoices</option></select>
+        <button class="btn btn-red" id="new-invoice">+ New Invoice</button>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table" id="invoices-table">
+          <thead>
+            <tr><th>Invoice</th><th>Customer</th><th>Issued</th><th>Due</th><th>Total</th><th>Status</th><th></th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p class="empty-state" id="invoices-empty" hidden>
+          No invoices yet. Open a completed job and choose “Create invoice”, or start a blank one.
+        </p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- DRAWER -->
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-modal="true" role="dialog">
+  <button class="drawer-close" id="drawer-close" aria-label="Close">×</button>
+  <div class="drawer-body" id="drawer-body"></div>
+</aside>
+
+<script src="assets/logo.js"></script>
+<script src="assets/pricing.js"></script>
+<script src="assets/crm.js"></script>
+</body>
+</html>
