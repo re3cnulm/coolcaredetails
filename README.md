@@ -17,7 +17,10 @@ public/            static site (this is what visitors see)
     booking.js       booking form behaviour
     crm.js           CRM application
     crm.css          CRM styles
-  images/            put logo.png here
+  images/
+    logo.webp        brand artwork used site-wide (PNG fallback alongside)
+    logo.png         same artwork, full quality
+    favicon.png      tab icon / touch icon
 api/               Vercel serverless functions
   auth.js            sign in / sign out / session check
   bookings.js        POST is public (the booking form); GET/PATCH/DELETE need a session

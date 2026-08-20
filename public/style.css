@@ -52,7 +52,7 @@ a { color: inherit; }
 .brand { text-decoration: none; display: flex; align-items: center; gap: .5rem; }
 /* logo slots — real artwork when images/logo.png exists, vector lockup otherwise */
 .brand-logo { display: block; line-height: 0; }
-.brand-logo .ccd-logo-img { height: 52px; width: auto; display: block; }
+.brand-logo .ccd-logo-img { height: 62px; width: auto; display: block; }
 .brand-logo .ccd-mark { height: 54px; width: auto; display: block; }
 
 .hero-logo-slot { display: block; line-height: 0; }

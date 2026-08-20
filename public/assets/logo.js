@@ -1,10 +1,10 @@
 /* Logo lockup.
  *
  * Every logo slot on the site is marked with data-ccd-logo. Each one prefers the
- * real artwork at images/logo.png and falls back to the vector lockup below if
- * that file isn't in the repo yet — so the brand never renders as bare text.
+ * real artwork (WebP, then PNG) and falls back to the vector lockup below if
+ * neither file is present — so the brand never renders as bare text.
  *
- * Drop the real logo.png into public/images/ and it takes over everywhere
+ * Artwork lives in public/images/. Replacing it there updates every slot
  * automatically; nothing here needs changing.
  */
 (function () {
@@ -69,28 +69,30 @@
       '</g>' +
     '</svg>';
 
+  // Try each source in turn; the vector lockup is the last resort.
   function mount(slot) {
     var alt = slot.getAttribute('data-logo-alt') || 'Coolcare Details';
-    var image = new Image();
+    var sources = (slot.getAttribute('data-ccd-logo') || 'images/logo.webp,images/logo.png')
+      .split(',').map(function (s) { return s.trim(); }).filter(Boolean);
 
-    image.onload = function () {
-      slot.innerHTML = '';
-      image.alt = alt;
-      image.className = 'ccd-logo-img';
-      slot.appendChild(image);
-      slot.classList.remove('has-vector');
-      slot.classList.add('has-artwork');
-      document.documentElement.classList.add('ccd-has-logo');
-    };
-    image.onerror = function () {
-      slot.innerHTML = SVG;
-      slot.classList.add('has-vector');
-    };
-
-    // Render the vector immediately so nothing flashes empty while the PNG loads.
+    // Show the vector immediately so nothing flashes empty while artwork loads.
     slot.innerHTML = SVG;
     slot.classList.add('has-vector');
-    image.src = slot.getAttribute('data-ccd-logo') || 'images/logo.png';
+
+    (function attempt(index) {
+      if (index >= sources.length) return;
+      var image = new Image();
+      image.onload = function () {
+        image.alt = alt;
+        image.className = 'ccd-logo-img';
+        slot.innerHTML = '';
+        slot.appendChild(image);
+        slot.classList.remove('has-vector');
+        slot.classList.add('has-artwork');
+      };
+      image.onerror = function () { attempt(index + 1); };
+      image.src = sources[index];
+    })(0);
   }
 
   function init() {

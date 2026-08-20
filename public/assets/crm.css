@@ -308,7 +308,7 @@ a { color: var(--red-bright); }
 
 /* logo slots */
 .crm-logo { display: block; line-height: 0; }
-.crm-logo .ccd-logo-img, .crm-logo .ccd-mark { height: 36px; width: auto; display: block; }
+.crm-logo .ccd-logo-img, .crm-logo .ccd-mark { height: 42px; width: auto; display: block; }
 .login-logo { display: block; line-height: 0; margin-bottom: .7rem; }
 .login-logo .ccd-logo-img, .login-logo .ccd-mark { width: 190px; height: auto; margin: 0 auto; display: block; }
 .ccd-mark .ccd-script { font-family: "Great Vibes", cursive; font-size: 116px; }
