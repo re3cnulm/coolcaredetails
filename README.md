@@ -11,6 +11,10 @@ pushing any other branch creates a preview deployment.
 public/            static site (this is what visitors see)
   index.html         homepage — packages, pricing, booking form
   crm.html           staff CRM (leads, schedule, invoices)
+  work.html          "Our Work" gallery page (/work)
+  about.html         About page (/about)
+  robots.txt         search-crawler rules
+  sitemap.xml        page list for search engines
   style.css          public site styles
   assets/
     pricing.js       shared service catalogue + quote math (browser + server)
@@ -18,11 +22,14 @@ public/            static site (this is what visitors see)
     crm.js           CRM application
     crm.css          CRM styles
     gallery.js       homepage Instagram showcase (embeds, then local photos)
+    showcase.js      homepage "See The Work" strip
+    work.js          full /work gallery loader
   images/
     logo.webp        brand artwork used site-wide (PNG fallback alongside)
     logo.png         same artwork, full quality
     favicon.png      tab icon / touch icon
     gallery/         fallback photos for the homepage grid — see its README
+    work/            detailing photos for /work and the homepage strip
   assets/instagram-posts.js — paste Instagram post links here to show real posts
 api/               Vercel serverless functions
   auth.js            sign in / sign out / session check

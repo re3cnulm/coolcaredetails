@@ -11,6 +11,56 @@
 <link rel="stylesheet" href="style.css">
 <link rel="icon" href="images/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="images/favicon.png">
+<link rel="canonical" href="https://coolcaredetails.com/">
+
+<!-- Link preview (Open Graph + Twitter) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Coolcare Details">
+<meta property="og:title" content="Coolcare Details — Mobile Auto Detailing in Las Vegas">
+<meta property="og:description" content="Premium mobile car detailing across the Las Vegas valley. We come to you. Call or text 702-720-0758.">
+<meta property="og:url" content="https://coolcaredetails.com/">
+<meta property="og:image" content="https://coolcaredetails.com/images/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Coolcare Details — Mobile Auto Detailing in Las Vegas">
+<meta name="twitter:description" content="Premium mobile car detailing across the Las Vegas valley. We come to you.">
+<meta name="twitter:image" content="https://coolcaredetails.com/images/logo.png">
+
+<!-- Business details for Google. TODO: confirm hours + service areas with the owner. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoWash",
+  "name": "Coolcare Details",
+  "image": "https://coolcaredetails.com/images/logo.png",
+  "url": "https://coolcaredetails.com/",
+  "telephone": "+1-702-720-0758",
+  "priceRange": "$85-$320",
+  "description": "Mobile auto detailing serving the Las Vegas valley. Interior and exterior detailing, ceramic protection, paint decontamination and more \u2014 we come to you.",
+  "areaServed": [
+    { "@type": "City", "name": "Las Vegas" },
+    { "@type": "City", "name": "Henderson" },
+    { "@type": "City", "name": "North Las Vegas" },
+    { "@type": "City", "name": "Summerlin" },
+    { "@type": "City", "name": "Spring Valley" },
+    { "@type": "City", "name": "Paradise" },
+    { "@type": "City", "name": "Enterprise" }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Las Vegas",
+    "addressRegion": "NV",
+    "addressCountry": "US"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 36.1699, "longitude": -115.1398 },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "08:00",
+    "closes": "18:00"
+  }],
+  "sameAs": ["https://www.instagram.com/coolcare_details"]
+}
+</script>
 </head>
 <body>
 
@@ -21,10 +71,12 @@
     <span class="brand-logo" data-ccd-logo="images/logo.webp,images/logo.png" data-logo-alt="Coolcare Details"></span>
   </a>
   <nav class="nav">
+    <a href="/work">Our Work</a>
     <a href="#packages">Packages</a>
     <a href="#addons">Add-Ons</a>
     <a href="#instagram">Gallery</a>
     <a href="#book">Book</a>
+    <a href="/about">About</a>
     <a href="#contact">Contact</a>
     <a class="nav-cta" href="tel:7027200758">702.720.0758</a>
   </nav>
@@ -34,14 +86,28 @@
 
   <!-- HERO -->
   <section class="hero">
-    <h1 class="hero-logo">
+    <div class="hero-logo">
       <span class="hero-logo-slot" data-ccd-logo="images/logo.webp,images/logo.png" data-logo-alt="Coolcare Details"></span>
-    </h1>
+    </div>
+    <h1 class="hero-h1">Mobile Auto Detailing in Las Vegas</h1>
     <p class="tagline">PREMIUM CAR CARE. EXCEPTIONAL RESULTS.</p>
     <p class="hero-sub">Mobile Detail Service — We Come To You, All Around Las Vegas</p>
     <div class="hero-ctas">
       <a class="btn btn-red" href="#book">🗓 Book Your Detail</a>
       <a class="btn btn-chrome" href="tel:7027200758">📞 Call or Text 702.720.0758</a>
+    </div>
+  </section>
+
+  <!-- SEE THE WORK (teaser -> /work) -->
+  <section id="showcase" class="section showcase">
+    <h2 class="section-title">See The <span class="amp">Work</span></h2>
+    <p class="showcase-lede">
+      Before-and-afters, ceramic coatings, and interiors brought back to life —
+      straight from the driveways of Las Vegas.
+    </p>
+    <div class="showcase-strip" id="showcase-strip"></div>
+    <div class="showcase-cta">
+      <a class="btn btn-red" href="/work">View The Full Gallery</a>
     </div>
   </section>
 
@@ -215,7 +281,7 @@
 
   <!-- INSTAGRAM -->
   <section id="instagram" class="section">
-    <h2 class="section-title">See The <span class="amp">Work</span></h2>
+    <h2 class="section-title">Follow Us On <span class="amp">Instagram</span></h2>
 
     <div class="ig-panel">
       <div class="ig-intro">
@@ -360,6 +426,7 @@
 <script src="assets/bubbles.js"></script>
 <script src="assets/instagram-posts.js"></script>
 <script src="assets/gallery.js"></script>
+<script src="assets/showcase.js"></script>
 <script src="assets/logo.js"></script>
 <script src="assets/pricing.js"></script>
 <script src="assets/booking.js"></script>
