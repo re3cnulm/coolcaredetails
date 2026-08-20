@@ -609,3 +609,10 @@ html, body { overflow-x: hidden; }
   font-size: .9rem; color: var(--chrome-light);
   border-top: 2px solid var(--red);
 }
+
+/* ===== business hours line ===== */
+.hours-line {
+  font-family: var(--font-head); text-transform: uppercase; letter-spacing: .05em;
+  font-size: 1rem; color: var(--chrome-mid); margin-top: 1rem;
+}
+.hours-line span { color: var(--red-bright); }
