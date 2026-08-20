@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
 
       // The quote is always priced server-side so a customer cannot set their
       // own total; signed-in staff logging a job by phone may override it.
-      if (auth.isAuthenticated(req)) {
+      if (await auth.isAuthenticated(req)) {
         const body = req.body || {};
         if (body.quote != null && body.quote !== '') result.value.quote = Number(body.quote);
         if (body.status) result.value.status = body.status;
@@ -31,7 +31,7 @@ module.exports = async (req, res) => {
     }
 
     // Everything below is CRM-only.
-    if (!auth.requireAuth(req, res)) return undefined;
+    if (!(await auth.requireAuth(req, res))) return undefined;
 
     if (req.method === 'GET') {
       const bookings = await store.listBookings();

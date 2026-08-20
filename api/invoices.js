@@ -3,7 +3,7 @@ const auth = require('../lib/auth');
 
 module.exports = async (req, res) => {
   try {
-    if (!auth.requireAuth(req, res)) return undefined;
+    if (!(await auth.requireAuth(req, res))) return undefined;
 
     if (req.method === 'GET') {
       const invoices = await store.listInvoices();

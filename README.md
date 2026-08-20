@@ -47,6 +47,12 @@ Both steps are done in the Vercel dashboard for this project.
 Until this is set the CRM login page says it isn't configured, and nobody can sign in.
 Redeploy after adding it so the functions pick it up.
 
+Once a database is attached you can change the password from inside the CRM
+(**Password** in the header). The new one is stored as a salted scrypt hash and
+takes precedence over `CRM_PASSWORD`, which stays valid as a recovery route —
+clear it in Vercel if you want the stored password to be the only way in.
+Changing the password signs out every other device.
+
 ### 2. Connect a database
 
 **Storage → Create Database → Neon Postgres**, then connect it to this project. Vercel

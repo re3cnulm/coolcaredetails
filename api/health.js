@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
     service: 'Coolcare Details',
     time: new Date().toISOString(),
     functionsRunning: true,
-    crmPasswordSet: auth.isConfigured(),
+    crmPasswordSet: await auth.isConfigured(),
     storage: store.storageMode(),
     databaseConnected: false
   };

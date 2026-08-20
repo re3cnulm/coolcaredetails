@@ -9,6 +9,7 @@
     search: '',
     statusFilter: '',
     invoiceFilter: '',
+    canChangePassword: false,
     calMonth: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
     selectedDay: null
   };
@@ -586,6 +587,96 @@
       }).join('') + '</select></label>';
   }
 
+  /* ----------------------------------------------------- password drawer -- */
+
+  $('change-password').addEventListener('click', openPasswordDrawer);
+
+  function openPasswordDrawer() {
+    var html = '<h2>Change Password</h2>' +
+      '<p class="drawer-sub">This is the password for signing in to the CRM.</p>';
+
+    if (!state.canChangePassword) {
+      html += '<div class="drawer-section">' +
+        '<p class="pw-warning">No database is connected, so a new password could not be saved — ' +
+        'it would be lost on the next request. In Vercel open <b>Storage → Create Database → ' +
+        'Neon Postgres</b> and connect it to this project, then try again.</p>' +
+        '<p class="cell-sub">Until then the password is whatever <b>CRM_PASSWORD</b> is set to ' +
+        'in your Vercel environment variables.</p></div>';
+      openDrawer(html);
+      return;
+    }
+
+    html += '<div class="drawer-section">' +
+      '<label class="field"><span>Current password</span>' +
+      '<input type="password" id="pw-current" autocomplete="current-password"></label>' +
+      '<label class="field"><span>New password</span>' +
+      '<input type="password" id="pw-new" autocomplete="new-password"></label>' +
+      '<label class="field"><span>Confirm new password</span>' +
+      '<input type="password" id="pw-confirm" autocomplete="new-password"></label>' +
+      '<p class="cell-sub">At least 10 characters. Changing it signs out every other device.</p>' +
+      '</div>' +
+      '<p class="form-message" id="pw-message"></p>' +
+      '<div class="drawer-actions">' +
+      '<button class="btn btn-red" id="pw-save">Update Password</button>' +
+      '<button class="ghost-btn" id="pw-suggest">Suggest a strong one</button>' +
+      '</div>';
+
+    openDrawer(html);
+
+    $('pw-suggest').addEventListener('click', function () {
+      var suggestion = suggestPassword();
+      $('pw-new').value = suggestion;
+      $('pw-confirm').value = suggestion;
+      $('pw-new').type = 'text';
+      $('pw-confirm').type = 'text';
+      setMessage('pw-message', 'Copy this somewhere safe before saving: ' + suggestion, 'ok');
+    });
+
+    $('pw-save').addEventListener('click', function () {
+      var current = $('pw-current').value;
+      var next = $('pw-new').value;
+
+      if (!current) return setMessage('pw-message', 'Enter your current password.', 'error');
+      if (next.length < 10) return setMessage('pw-message', 'New password must be at least 10 characters.', 'error');
+      if (next !== $('pw-confirm').value) return setMessage('pw-message', 'The two new passwords do not match.', 'error');
+
+      this.disabled = true;
+      api('/api/auth', {
+        method: 'POST',
+        body: JSON.stringify({ action: 'change-password', currentPassword: current, newPassword: next })
+      }).then(function (result) {
+        var note = result.envStillValid
+          ? ' Note: the CRM_PASSWORD in Vercel still works as a backup — remove or update it there if you want this to be the only password.'
+          : '';
+        setMessage('pw-message', 'Password updated. Other devices have been signed out.' + note, 'ok');
+        $('pw-current').value = $('pw-new').value = $('pw-confirm').value = '';
+        $('pw-save').disabled = false;
+      }).catch(function (err) {
+        setMessage('pw-message', err.message, 'error');
+        $('pw-save').disabled = false;
+      });
+    });
+  }
+
+  function setMessage(id, text, kind) {
+    var el = $(id);
+    el.textContent = text;
+    el.className = 'form-message is-' + kind;
+  }
+
+  // Mirrors the generator used to create the original password.
+  function suggestPassword() {
+    var alphabet = 'abcdefghjkmnpqrstuvwxyz23456789';
+    var bytes = new Uint32Array(20);
+    (window.crypto || window.msCrypto).getRandomValues(bytes);
+    var out = '';
+    for (var i = 0; i < 20; i++) {
+      if (i && i % 5 === 0) out += '-';
+      out += alphabet[bytes[i] % alphabet.length];
+    }
+    return out;
+  }
+
   /* ------------------------------------------------------ invoice drawer -- */
 
   function openInvoiceDrawer(id, seed) {
@@ -789,6 +880,7 @@
   /* =============================================================== boot === */
 
   api('/api/auth').then(function (result) {
+    state.canChangePassword = result.canChangePassword;
     if (result.authenticated) { showApp(); return loadData(); }
     showLogin();
     if (!result.configured) {
