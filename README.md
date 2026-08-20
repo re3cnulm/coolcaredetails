@@ -30,6 +30,7 @@ public/            static site (this is what visitors see)
     favicon.png      tab icon / touch icon
     gallery/         fallback photos for the homepage grid — see its README
     work/            detailing photos for /work and the homepage strip
+  videos/            work videos (1-3.mp4) with poster frames (1-3.jpg)
   assets/instagram-posts.js — paste Instagram post links here to show real posts
 api/               Vercel serverless functions
   auth.js            sign in / sign out / session check

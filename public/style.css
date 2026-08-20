@@ -587,3 +587,25 @@ html, body { overflow-x: hidden; }
 .footer-nav { margin-top: .5rem; font-size: .9rem; }
 .footer-nav a { color: var(--chrome-mid); text-decoration: none; }
 .footer-nav a:hover { color: var(--red-bright); }
+
+/* ===== work videos (vertical reel cards) ===== */
+.video-row {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem; max-width: 900px; margin: 0 auto;
+}
+@media (max-width: 720px) { .video-row { grid-template-columns: 1fr; max-width: 360px; } }
+.video-card {
+  margin: 0; background: linear-gradient(160deg, #141518, #0b0c0e);
+  border: 1px solid rgba(255,255,255,.12); border-radius: 12px;
+  overflow: hidden; box-shadow: 0 8px 26px rgba(0,0,0,.5);
+}
+.video-card video {
+  display: block; width: 100%; aspect-ratio: 9 / 16;
+  object-fit: cover; background: #000;
+}
+.video-card figcaption {
+  padding: .7rem .85rem;
+  font-family: var(--font-head); text-transform: uppercase; letter-spacing: .03em;
+  font-size: .9rem; color: var(--chrome-light);
+  border-top: 2px solid var(--red);
+}
