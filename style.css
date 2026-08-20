@@ -49,7 +49,14 @@ a { color: inherit; }
   border-bottom: 2px solid var(--red);
   backdrop-filter: blur(6px);
 }
-.brand { text-decoration: none; display: flex; align-items: baseline; gap: .5rem; }
+.brand { text-decoration: none; display: flex; align-items: center; gap: .5rem; }
+.brand-logo { height: 52px; width: auto; display: block; filter: drop-shadow(0 0 6px rgba(193,18,31,.4)); }
+.brand-text { align-items: baseline; gap: .5rem; }
+.hero-logo-img {
+  display: block; margin: 0 auto;
+  width: min(480px, 82vw); height: auto;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,.8)) drop-shadow(0 0 26px rgba(193,18,31,.35));
+}
 .brand-script { font-family: "Great Vibes", cursive; font-size: 1.9rem; }
 .brand-details { font-family: var(--font-head); font-weight: 700; letter-spacing: .35em; font-size: .8rem; }
 .nav { display: flex; align-items: center; gap: 1.2rem; }

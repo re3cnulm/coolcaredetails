@@ -15,8 +15,12 @@
 
 <header class="topbar">
   <a class="brand" href="#top">
-    <span class="brand-script">Coolcare</span>
-    <span class="brand-details">DETAILS</span>
+    <img class="brand-logo" src="images/logo.png" alt="Coolcare Details logo"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <span class="brand-text" style="display:none">
+      <span class="brand-script">Coolcare</span>
+      <span class="brand-details">DETAILS</span>
+    </span>
   </a>
   <nav class="nav">
     <a href="#packages">Packages</a>
@@ -42,8 +46,13 @@
       </svg>
     </div>
     <h1 class="hero-logo">
-      <span class="logo-script">Coolcare</span>
-      <span class="logo-details">D E T A I L S</span>
+      <img class="hero-logo-img" src="images/logo.png" alt="Coolcare Details"
+           onload="document.querySelector('.hero-pinstripe').style.display='none'"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="hero-logo-text" style="display:none">
+        <span class="logo-script">Coolcare</span>
+        <span class="logo-details">D E T A I L S</span>
+      </span>
     </h1>
     <p class="tagline">PREMIUM CAR CARE. EXCEPTIONAL RESULTS.</p>
     <p class="hero-sub">Mobile Detail Service — We Come To You, All Around Las Vegas</p>
