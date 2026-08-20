@@ -21,6 +21,7 @@ public/            static site (this is what visitors see)
     logo.webp        brand artwork used site-wide (PNG fallback alongside)
     logo.png         same artwork, full quality
     favicon.png      tab icon / touch icon
+    gallery/         homepage Instagram grid — see the README in that folder
 api/               Vercel serverless functions
   auth.js            sign in / sign out / session check
   bookings.js        POST is public (the booking form); GET/PATCH/DELETE need a session
