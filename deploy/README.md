@@ -59,7 +59,7 @@ NODE_ENV=production
 HOST=127.0.0.1
 PORT=3000
 DATABASE_URL=postgres://coolcare:PICK_A_STRONG_ONE@localhost:5432/coolcaredetails
-CRM_PASSWORD=rmyba-5t6w5-u85xr-42yk9
+CRM_PASSWORD=GENERATE_A_STRONG_PASSWORD
 CRM_SESSION_SECRET=CHANGE_ME_LONG_RANDOM_STRING
 ENV
 chmod 600 /var/www/coolcaredetails/.env
@@ -70,6 +70,9 @@ Generate a random session secret:
 ```bash
 node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"
 ```
+
+Use a different generated value for `CRM_PASSWORD`; never copy a password from
+documentation or reuse `CRM_SESSION_SECRET` as the password.
 
 ## 6. Start under pm2
 
