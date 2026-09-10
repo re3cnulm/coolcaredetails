@@ -8,6 +8,9 @@ const MAX_ATTEMPTS = 8;
 const WINDOW_MS = 15 * 60 * 1000;
 
 function clientIp(req) {
+  // Express resolves req.ip using the server's trust-proxy policy. Keep the
+  // raw-header fallback for the Vercel request object, which has no req.ip.
+  if (req.ip) return req.ip;
   return (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
 }
 
